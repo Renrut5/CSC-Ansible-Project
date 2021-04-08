@@ -18,10 +18,17 @@
         - php-cgi
         - php-mysqli
         - php-pear
+        - php-curl
+        - php-gd
+        - php-xml
+        - php-xmlrpc
+        - php-soap
+        - php-intl
+        - php-zip
         - php-mbstring
         - php-gettext
         - libapache2-mod-php
         - php-common
         - php-phpseclib
         - php-mysql
-        
+        - openssh-server
