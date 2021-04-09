@@ -5,6 +5,11 @@
   remote_user: root
   become: true
   tasks:
+    - name: Update all packages
+      yum:
+        name: "*"
+        state: latest
+        
     - name: Install basic services
       yum:
         name: "{{ item }}"
@@ -33,4 +38,23 @@
         - php-gd
         - php-curl
         - php-mysqlnd
+        
+    - name: Open firewall ports
+      firewalld:
+        service: "{{ item }}"
+        permanent: true
+        state: enabled
+      loop:
+        - http
+        - 8080/tcp
+        
+    - name: Reload firewall service to enable changes
+      systemd:
+        name: firewalld
+        state: reloaded
+        
+    - name: Ensure web services are started or restarted
+      ansible.builtin.systemd:
+        name: "{{ item }}"
+        state: restarted
         
