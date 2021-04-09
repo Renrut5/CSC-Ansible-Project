@@ -34,4 +34,3 @@
         - php-curl
         - php-mysqlnd
         
-    - name: Install MySQL Service
