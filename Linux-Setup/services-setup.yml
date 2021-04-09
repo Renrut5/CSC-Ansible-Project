@@ -52,4 +52,6 @@
       ansible.builtin.systemd:
         name: "{{ item }}"
         state: restarted
+      loop:
+        - httpd
         
