@@ -5,11 +5,6 @@
   remote_user: root
   become: true
   tasks:
-    - name: Update all packages
-      yum:
-        name: "*"
-        state: latest
-        
     - name: Install basic services
       yum:
         name: "{{ item }}"
