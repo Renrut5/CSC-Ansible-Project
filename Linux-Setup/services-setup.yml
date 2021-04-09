@@ -1,34 +1,37 @@
 ---
 - name: ServicesVM Installation
   hosts: localhost
+  ignore_errors: yes
   remote_user: root
   become: true
   tasks:
-    - name: Install required packages
-      apt:
+    - name: Install basic services
+      yum:
         name: "{{ item }}"
         state: present
         update_cache: true
       loop:
         - firewalld
-        - apache2
+        - yum-utils
+        - epel-release
         - net-tools
         - samba
-        - php
-        - php-cgi
-        - php-mysqli
-        - php-pear
-        - php-curl
-        - php-gd
-        - php-xml
-        - php-xmlrpc
-        - php-soap
-        - php-intl
-        - php-zip
-        - php-mbstring
-        - php-gettext
-        - libapache2-mod-php
-        - php-common
-        - php-phpseclib
-        - php-mysql
         - openssh-server
+        
+    - name: Install Web Services and Modules
+      yum:
+        name: "{{ item }}"
+        state: present
+        update_cache: true
+      loop:
+        - httpd
+        - php
+        - php-common
+        - php-opcache
+        - php-mcrypt
+        - php-cli
+        - php-gd
+        - php-curl
+        - php-mysqlnd
+        
+    - name: Install MySQL Service
