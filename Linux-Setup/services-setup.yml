@@ -7,7 +7,7 @@
   tasks:
     - name: Update all packages
       yum:
-        name: *
+        name: "*"
         state: latest
     - name: Install basic services
       yum:
