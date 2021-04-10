@@ -17,7 +17,6 @@
       loop:
         - firewalld
         - yum-utils
-        - epel-release
         - net-tools
         - samba
         - openssh-server
