@@ -45,7 +45,7 @@
         state: enabled
       loop:
         - http
-        - 443
+        - https
         
     - name: Reload firewall service to enable changes
       systemd:
