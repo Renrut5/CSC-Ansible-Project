@@ -5,7 +5,7 @@
   remote_user: root
   become: true
   tasks:
-    - name: Update all packages
+    - name: Update all packages (This may take a while)
       yum:
         name: "*"
         state: latest
